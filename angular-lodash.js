@@ -34,7 +34,7 @@
 
   // Shiv "filter", "reject" to angular's built-in,
   // and reserve lodash's feature(works on obj).
-  ng.injector(['ng']).invoke(function($filter) {
+  ng.injector(['ng']).invoke(['$filter', function($filter) {
     _.filter = _.select = _.wrap($filter('filter'), function(filter, obj, exp) {
       if(!(_.isArray(obj))) {
         obj = _.toArray(obj);
@@ -53,7 +53,7 @@
 
       return diff(_.filter(obj, exp));
     };
-  });
+  }]);
 
   // end custom _
 
@@ -68,7 +68,7 @@
       utilsModule,
       ng.module('angular-lodash/utils/' + methodName, [])
       ], function(module) {
-        module.run(register);
+        module.run(['$rootScope', register]);
     });
   });
 
