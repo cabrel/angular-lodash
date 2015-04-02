@@ -126,10 +126,29 @@
       'escape',
       'result',
       'template',
-      'camelCase'
     ];
 
-  _.each(adapList, function(filterNames) {
+  var stringMethods = [
+    'camelCase',
+    'capitalize',
+    'deburr',
+    'escape',
+    'escapeRegExp',
+    'kebabCase',
+    'pad',
+    'padLeft',
+    'padRight',
+    'parseInt',
+    'snakeCase',
+    'trim',
+    'trinLeft',
+    'trimRight',
+    'trunc',
+    'unescape',
+    'words'
+  ]
+
+  _.each(_.union(adapList, stringMethods), function(filterNames) {
     if(!(_.isArray(filterNames))) {
       filterNames = [filterNames];
     }
