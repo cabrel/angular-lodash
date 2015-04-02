@@ -125,7 +125,8 @@
       'uniqueId',
       'escape',
       'result',
-      'template'
+      'template',
+      'camelCase'
     ];
 
   _.each(adapList, function(filterNames) {
