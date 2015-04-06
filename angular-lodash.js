@@ -141,7 +141,7 @@
     'parseInt',
     'snakeCase',
     'trim',
-    'trinLeft',
+    'trimLeft',
     'trimRight',
     'trunc',
     'unescape',
