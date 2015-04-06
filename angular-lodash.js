@@ -125,7 +125,7 @@
       'uniqueId',
       'escape',
       'result',
-      'template',
+      'template'
     ];
 
   var stringMethods = [
