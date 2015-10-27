@@ -140,6 +140,7 @@
     'padRight',
     'parseInt',
     'snakeCase',
+    'startCase',
     'trim',
     'trimLeft',
     'trimRight',
