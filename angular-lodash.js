@@ -35,7 +35,7 @@
   // Shiv "filter", "reject" to angular's built-in,
   // and reserve lodash's feature(works on obj).
   ng.injector(['ng']).invoke(['$filter', function($filter) {
-    _.filter = _.select = _.wrap($filter('filter'), function(filter, obj, exp) {
+    _.filter = _.wrap($filter('filter'), function(filter, obj, exp) {
       if(!(_.isArray(obj))) {
         obj = _.toArray(obj);
       }
@@ -60,7 +60,7 @@
 
   // begin register angular-lodash/utils
 
-  _.each(_.methods(_), function(methodName) {
+  _.each(_.functions(_), function(methodName) {
     function register($rootScope) {$rootScope[methodName] = _.bind(_[methodName], _);}
 
     _.each([
@@ -84,11 +84,8 @@
       ['reduceRight', 'foldr'],
       ['find', 'detect'],
       ['filter', 'select'],
-      'where',
-      'findWhere',
       'reject',
       'invoke',
-      'pluck',
       'max',
       'min',
       'sortBy',
@@ -100,14 +97,14 @@
       ['first', 'head', 'take'],
       'initial',
       'last',
-      ['rest', 'tail', 'drop'],
+      ['tail', 'drop'],
       'compact',
       'flatten',
       'without',
       'union',
       'intersection',
       'difference',
-      ['uniq', 'unique'],
+      'unique',
       'zip',
       'object',
       'indexOf',
@@ -115,7 +112,7 @@
       'sortedIndex',
       'keys',
       'values',
-      'pairs',
+      'toPairs',
       'invert',
       ['functions', 'methods'],
       'pick',
