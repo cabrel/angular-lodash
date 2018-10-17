@@ -35,7 +35,7 @@
   // Shiv "filter", "reject" to angular's built-in,
   // and reserve lodash's feature(works on obj).
   ng.injector(['ng']).invoke(['$filter', function($filter) {
-    _.filter = _.select = _.wrap($filter('filter'), function(filter, obj, exp) {
+    _.filter = _.wrap($filter('filter'), function(filter, obj, exp) {
       if(!(_.isArray(obj))) {
         obj = _.toArray(obj);
       }
@@ -60,7 +60,7 @@
 
   // begin register angular-lodash/utils
 
-  _.each(_.methods(_), function(methodName) {
+  _.each(_.functions(_), function(methodName) {
     function register($rootScope) {$rootScope[methodName] = _.bind(_[methodName], _);}
 
     _.each([
@@ -79,16 +79,13 @@
 
   var
     adapList = [
-      ['map', 'collect'],
+      ['map','pluck', 'collect'],
       ['reduce', 'inject', 'foldl'],
       ['reduceRight', 'foldr'],
-      ['find', 'detect'],
-      ['filter', 'select'],
-      'where',
-      'findWhere',
+      ['find', 'findWhere','detect'],
+      ['filter',  'where','select'],
       'reject',
-      'invoke',
-      'pluck',
+      ['invokeMap','invoke'],
       'max',
       'min',
       'sortBy',
@@ -97,10 +94,10 @@
       'shuffle',
       'toArray',
       'size',
-      ['first', 'head', 'take'],
+      ['head','first',  'take'],
       'initial',
       'last',
-      ['rest', 'tail', 'drop'],
+      ['tail','rest', 'tail', 'drop'],
       'compact',
       'flatten',
       'without',
@@ -109,13 +106,13 @@
       'difference',
       ['uniq', 'unique'],
       'zip',
-      'object',
+      ['fromPairs', 'object'],
       'indexOf',
       'lastIndexOf',
       'sortedIndex',
       'keys',
       'values',
-      'pairs',
+      ['toPairs', 'pairs'],
       'invert',
       ['functions', 'methods'],
       'pick',
